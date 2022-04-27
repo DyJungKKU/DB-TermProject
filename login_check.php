@@ -17,4 +17,5 @@ if ($mb['mb_password'] != $mb_password) {
 
 $_SESSION['mb_id'] = $mb_id; // $mb_id로 세션 생성 -> 로그인
 
-echo "Login Success";
+header("Location: /");
+exit;

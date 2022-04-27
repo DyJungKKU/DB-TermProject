@@ -10,6 +10,8 @@ $conn = mysqli_connect("localhost", $DB_User, $DB_Password, $DB_Name);
 if (isset($_SESSION['mb_id'])) {
     $member = get_member($_SESSION['mb_id']);
     $is_logined = true;
+} else {
+    $is_logined = false;
 }
 
 function sql_query($sql) {

@@ -33,6 +33,15 @@ include_once("./_common.php");
           <li class="nav-item active">
             <a class="nav-link" href="#">메인 <span class="sr-only">(current)</span></a>
           </li>
+          <?php if (!$is_logined) { ?>
+          <li class="nav-item active">
+                <a class="nav-link" href="/login.php">로그인</a>
+          </li>
+          <?php } else {?>
+            <li class="nav-item active">
+                <a class="nav-link" href="/logout.php">로그아웃</a>
+          </li>
+          <?php } ?>
         </ul>
       </div>
     </nav>
