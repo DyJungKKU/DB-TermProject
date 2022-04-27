@@ -4,7 +4,7 @@ include_once("./_common.php");
 ?>
 
 <footer class="container">
-      <p>&copy; Company 2017-2018</p>
+      <p>&copy; Jung.</p>
     </footer>
 
     <!-- Bootstrap core JavaScript

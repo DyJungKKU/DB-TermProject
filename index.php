@@ -14,8 +14,7 @@ include_once("./_head.php");
   </div>
 </div>
 
-<div class="container">
-  <!-- Example row of columns -->
+<!-- <div class="container">
   <div class="row">
     <div class="col-md-4">
       <h2>Heading</h2>
@@ -32,7 +31,7 @@ include_once("./_head.php");
       <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
       <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
     </div>
-  </div>
+</div> -->
 
   <hr>
 
