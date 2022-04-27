@@ -1,4 +1,7 @@
 <?php // 공통 파일
+if(!session_id()) { // id가 없을 경우 세션 시작 
+    session_start(); 
+}
 include_once("./dbconfig.php"); // DB 정보
 $conn = mysqli_connect("localhost", $DB_User, $DB_Password, $DB_Name);
 

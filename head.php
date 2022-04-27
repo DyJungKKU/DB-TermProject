@@ -1,6 +1,6 @@
 <?php
-include_once("./_common.php");
 $pageTitle = "메인 페이지";
+include_once("./_common.php");
 ?>
 
 <!doctype html>
