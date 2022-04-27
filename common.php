@@ -1,4 +1,5 @@
 <?php // 공통 파일
+$pageTitle = "메인 페이지";
 if(!session_id()) { // id가 없을 경우 세션 시작 
     session_start(); 
 }
