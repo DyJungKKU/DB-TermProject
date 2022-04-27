@@ -7,6 +7,11 @@ $conn = mysqli_connect("localhost", $DB_User, $DB_Password, $DB_Name);
 
 // 사용 함수 정의 
 
+if (isset($_SESSION['mb_id'])) {
+    $member = get_member($_SESSION['mb_id']);
+    $is_logined = true;
+}
+
 function sql_query($sql) {
     global $conn;
     return mysqli_query($conn, trim($sql));
