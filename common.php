@@ -39,3 +39,27 @@ function get_member($mb_id) { // 사용자 SELECT 함수
     $result = sql_fetch_array($rs);
     return $result;
 }
+
+function get_coin($symbol) {
+    $url = "https://api.binance.com/api/v3/ticker/24hr?symbol=" . $symbol;
+    $json_string = file_get_contents_curl($url);
+    $data = array();
+    $data = json_decode($json_string, true);
+
+    return $data;
+}
+
+function file_get_contents_curl($url) {
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_AUTOREFERER, TRUE);
+    curl_setopt($ch, CURLOPT_HEADER, 0);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); // 요청결과를 문자열로 반환
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
+
+    $data = curl_exec($ch);
+    curl_close($ch);
+
+    return $data;
+}
