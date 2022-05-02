@@ -49,6 +49,15 @@ function get_coin($symbol) {
     return $data;
 }
 
+function get_coin_ticker($symbol) {
+    $url = "https://api.binance.com/api/v3/ticker/24hr?symbol=" . $symbol;
+    $json_string = file_get_contents_curl($url);
+    $data = array();
+    $data = json_decode($json_string, true);
+
+    return $data;
+}
+
 function file_get_contents_curl($url) {
     $ch = curl_init();
 
