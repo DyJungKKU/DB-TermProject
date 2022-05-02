@@ -1,12 +1,8 @@
 <?php
 include_once("./_common.php");
 
-$mb_id = ($_POST['mb_id']) ?? "";
-$mb_password = ($_POST['mb_password']) ?? "";
-
-echo $mb_id;
-echo "<br>";
-echo $mb_password;
+$mb_id = trim($_POST['mb_id']) ?? "";
+$mb_password = md5(trim($_POST['mb_password'])) ?? "";
 
 $getMember = get_member($mb_id);
 

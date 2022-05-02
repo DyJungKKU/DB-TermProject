@@ -32,6 +32,7 @@ if (isset($_SESSION['mb_id'])) {
       <input type="password" id="inputPassword" name="mb_password" class="form-control" placeholder="Password" required>
 
       <button class="btn btn-lg btn-primary btn-block" type="submit">로그인</button>
+      <p><a href="register.php">회원가입</a></p>
       <p class="mt-5 mb-3 text-muted">&copy; Jung.</p>
     </form>
   </body>
