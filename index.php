@@ -2,7 +2,6 @@
 include_once("./_common.php");
 include_once("./_head.php");
 
-echo "123";
 ?>
 <main role="main">
 <!-- Main jumbotron for a primary marketing message or call to action -->
