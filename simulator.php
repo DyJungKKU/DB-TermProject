@@ -6,6 +6,13 @@ include_once("./_head.php");
 if (!$is_logined) { // 로그인
     header("Location: /login.php");
 }
+
+$symbol = $_GET['symbol'] ?? "BTCUSDT";
+if (!isset($symbol)) exit;
+
+$coin = get_coin($symbol);
+if (!isset($coin)) exit;
+
 ?>
 <link href="./css/simulator.css" rel="stylesheet">
 
@@ -51,7 +58,7 @@ if (!$is_logined) { // 로그인
     </nav>
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-        <h1 class="h2">차트</h1>
+        <h1 class="h2"><?php echo $coin['symbol']; ?> - <?php echo $coin['bidPrice']; ?><b style="font-size: 18px;">USDT</b> <b style="font-size: 18px;color: red">(<?php echo $coin['priceChange']; ?>)</b></h1>
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group mr-2">
             <button class="btn btn-sm btn-outline-secondary">매수</button>
