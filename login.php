@@ -2,7 +2,7 @@
 include_once("./_common.php");
 
 if (isset($_SESSION['mb_id'])) {
-    header("Location: http://localhost/");
+    header("Location: /");
 }
 ?>
 

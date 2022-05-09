@@ -7,10 +7,8 @@ $mb_password = md5(trim($_POST['mb_password'])) ?? "";
 $getMember = get_member($mb_id);
 
 if (isset($getMember)) {
+    header("Location: /");
     exit;
-    echo "True";
-} else {
-    echo "False";
 }
 
 $sql = " INSERT INTO `member` SET
@@ -19,3 +17,5 @@ $sql = " INSERT INTO `member` SET
 `mb_password` = '$mb_password',
 `mb_point` = '0' ";
 sql_query($sql);
+
+header("Location: /");
