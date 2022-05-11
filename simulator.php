@@ -22,21 +22,21 @@ if (!isset($coin)) exit;
       <div class="sidebar-sticky">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" href="#">
+            <a class="nav-link <?php echo $symbol == "BTCUSDT" ? "active" : "" ; ?>" href="/simulator.php?symbol=BTCUSDT">
               <span data-feather="home"></span>
-              BTCUSDT - 비트코인<span class="sr-only">(current)</span>
+              BTCUSDT - 비트코인<?php if ($symbol == "BTCUSDT") { ?><span class="sr-only">(current)<?php } ?></span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link <?php echo $symbol == "ETHUSDT" ? "active" : "" ; ?>" href="/simulator.php?symbol=ETHUSDT">
               <span data-feather="file"></span>
-              ETCUSDT - 이더리움
+              ETHUSDT - 이더리움<?php if ($symbol == "ETHUSDT") { ?><span class="sr-only">(current)<?php } ?></span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link <?php echo $symbol == "DOGEUSDT" ? "active" : "" ; ?>" href="/simulator.php?symbol=DOGEUSDT">
               <span data-feather="shopping-cart"></span>
-              DOGEUSDT - 도지코인
+              DOGEUSDT - 도지코인<?php if ($symbol == "DOGEUSDT") { ?><span class="sr-only">(current)<?php } ?></span>
             </a>
           </li>
         </ul>
@@ -58,7 +58,7 @@ if (!isset($coin)) exit;
     </nav>
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-        <h1 class="h2"><?php echo $coin['symbol']; ?> - <?php echo $coin['bidPrice']; ?><b style="font-size: 18px;">USDT</b> <b style="font-size: 18px;color: red">(<?php echo $coin['priceChange']; ?>)</b></h1>
+        <h1 class="h2"><?php echo $symbol; ?> - <?php echo $coin['bidPrice']; ?><b style="font-size: 18px;">USDT</b> <b style="font-size: 18px;color: red">(<?php echo $coin['priceChange']; ?>)</b></h1>
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group mr-2">
             <button class="btn btn-sm btn-outline-secondary">매수</button>
