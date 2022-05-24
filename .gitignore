@@ -1,3 +1,5 @@
 cgi-bin
 dbconfig.php
 .DS_Store
+test.php
+mysql.php
