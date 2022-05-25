@@ -15,6 +15,13 @@ if (!isset($coin)) exit;
 
 ?>
 <link href="./css/simulator.css" rel="stylesheet">
+<style>
+  input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+</style>
 
 <div class="container-fluid">
   <div class="row">
@@ -61,6 +68,13 @@ if (!isset($coin)) exit;
         <h1 class="h2"><?php echo $symbol; ?> - <?php echo $coin['bidPrice']; ?><b style="font-size: 18px;">USDT</b> <b style="font-size: 18px;color: red">(<?php echo $coin['priceChange']; ?>)</b></h1>
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group mr-2">
+          <div class="input-group">
+            <input type="number" class="form-control">
+            <div class="input-group-append">
+              <span class="input-group-text">₩</span>
+            </div>  
+          </div>
+          &nbsp;
             <button class="btn btn-sm btn-outline-secondary">매수</button>
             <button class="btn btn-sm btn-outline-secondary">매도</button>
           </div>

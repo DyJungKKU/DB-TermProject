@@ -6,12 +6,12 @@ $mb_password = md5(trim($_POST['mb_password'])) ?? "";
 $mb = get_member($mb_id);
 
 if (!isset($mb['id'])) {
-    echo "NO ID";
+    alert("회원 정보가 올바르지 않습니다.");
     exit;
 }
 
 if ($mb['mb_password'] != $mb_password) {
-    echo "Incorrect Password";
+    alert("회원 정보가 올바르지 않습니다.");
     exit;
 }
 

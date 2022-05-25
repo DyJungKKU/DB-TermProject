@@ -72,3 +72,13 @@ function file_get_contents_curl($url) {
 
     return $data;
 }
+
+function alert($msg, $url = null) {
+    if (isset($msg) && !isset($url)) {
+        echo "<script>location.href='/alert.php?msg=" . $msg . "'</script>";
+    }
+    if (isset($msg) && isset($url)) {
+        echo "<script>location.href='/alert.php?msg=" . $msg . "&url=" . $url . "'</script>";
+    }
+    exit;
+}

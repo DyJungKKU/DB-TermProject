@@ -18,4 +18,4 @@ $sql = " INSERT INTO `member` SET
 `mb_point` = '0' ";
 sql_query($sql);
 
-header("Location: /");
+alert("회원가입이 완료 되었습니다.", "/");
