@@ -80,7 +80,31 @@ input[type="number"]::-webkit-inner-spin-button {
           </div>
         </div>
       </div>
-      <canvas class="my-4" id="myChart" width="900" height="380"></canvas>
+      <!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container" style="height: 400px;">
+  <div id="tradingview_bdda3"></div>
+  <div class="tradingview-widget-copyright">TradingView 제공 <a href="https://kr.tradingview.com/symbols/BTCUSDT/?exchange=BINANCE" rel="noopener" target="_blank"><span class="blue-text">BTCUSDT 차트</span></a></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+  <script type="text/javascript">
+  new TradingView.widget(
+  {
+  "width": "100%",
+  "height": 400,
+  "symbol": "BINANCE:<?php echo $symbol; ?>",
+  "interval": "D",
+  "timezone": "Etc/UTC",
+  "theme": "light",
+  "style": "1",
+  "locale": "kr",
+  "toolbar_bg": "#f1f3f6",
+  "enable_publishing": false,
+  "allow_symbol_change": true,
+  "container_id": "tradingview_bdda3"
+}
+  );
+  </script>
+</div>
+<!-- TradingView Widget END -->
       <h2>매수 / 매도 내역</h2>
       <div class="table-responsive">
         <table class="table table-striped table-sm">
