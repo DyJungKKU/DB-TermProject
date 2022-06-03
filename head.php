@@ -1,6 +1,10 @@
 <?php
 
 include_once("./_common.php");
+
+// echo "<pre>";
+//     print_r($_SERVER);
+// echo "</pre>";
 ?>
 
 <!doctype html>
@@ -23,24 +27,18 @@ include_once("./_common.php");
   <body>
 
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="/">My Project</a>
+      <a class="navbar-brand" href="/">가상화폐 시뮬레이션</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="/">메인 <span class="sr-only">(current)</span></a>
-          </li>
           <?php if (!$is_logined) { ?>
           <li class="nav-item active">
                 <a class="nav-link" href="/login.php">로그인</a>
           </li>
           <?php } else {?>
-            <li class="nav-item active">
-                <a class="nav-link" href="/simulator.php">가상화폐 시뮬레이션</span></a>
-            </li>
             <li class="nav-item active">
                 <a class="nav-link" href="/logout.php">로그아웃</a>
             </li>

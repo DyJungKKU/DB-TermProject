@@ -1,20 +1,17 @@
 <?php
 include_once("./_common.php");
-include_once("./_head.php");
+
+if (!$is_logined) { // 로그인 X
+  header("Location: /login.php");
+} else { // 로그인
+  header("Location: /simulator.php");
+}
+
 ?>
 <main role="main">
 <!-- Main jumbotron for a primary marketing message or call to action -->
-<div class="jumbotron">
-  <div class="container">
-      <?php if (!$is_logined) { ?>
-    <h1 class="display-3">Hello, world!</h1>
-    <?php } else { ?>
-        <h1 class="display-3">Hello, <?php echo $member['mb_id'] ?>!</h1>
-    <?php } ?>
-    <p>설명 부분</p>
-    <!-- <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p> -->
-  </div>
-</div>
+
+
 
 <!-- <div class="container">
   <div class="row">

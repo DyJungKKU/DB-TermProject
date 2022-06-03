@@ -6,6 +6,13 @@ if(!session_id()) { // id가 없을 경우 세션 시작
 include_once("./dbconfig.php"); // DB 정보
 $conn = mysqli_connect("localhost", $DB_User, $DB_Password, $DB_Name);
 
+date_default_timezone_set('Asia/Seoul'); // datetime 시간대
+
+// 사용 색상 정의
+
+$color_green = "#01A66D";
+$color_red = "#EF5250";
+
 // 사용 함수 정의 
 
 if (isset($_SESSION['mb_id'])) {
@@ -25,7 +32,7 @@ function sql_fetch_array($result) {
 }
 
 function insert_point($mb_id, $point) { // 사용자 포인트 지급 함수
-    if (!is_int($point)) return; // 포인트가 정수가 아닐 경우 리턴
+    if (!is_int($point) && !is_double($point)) return; // 포인트가 정수가 아닐 경우 리턴
     $mb = get_member($mb_id);
     if (!$mb['mb_id']) return; // 사용자가 없을 경우 리턴
     $newPoint = $mb['mb_point'] + $point;
