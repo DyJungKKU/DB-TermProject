@@ -62,7 +62,7 @@ input[type="number"]::-webkit-inner-spin-button {
               <td><?php echo $result['id']; ?></td>
               <td><a href="/simulator.php?symbol=<?php echo $result['symbol']; ?>"><?php echo $result['symbol']; ?></a></td>
               <td><?php echo number_format($nowPrice); ?> KRW</td>
-              <td><?php echo number_format($result['buy_price']); ?> KRW <b style="color: <?php echo $sonik >= 0 ? $color_green : $color_red; ?>">(<?php echo ($sonik); ?> %)</b></td>
+              <td><?php echo number_format($result['buy_price']); ?> KRW <b style="color: <?php echo $sonik >= 0 ? $color_green : $color_red; ?>">(<?php echo $sonik > 0 ? "+" : ""; ?><?php echo ($sonik); ?> %)</b></td>
               <td><?php echo $result['amount']; ?> <?php echo $coinUnit; ?></td>
               <td><?php echo number_format($nowPrice * $result['amount']) ?> KRW</td>
               <td style="color: <?php echo $sonik >= 0 ? $color_green : $color_red; ?>"><?php echo number_format($realizeSonik); ?> KRW</td>
