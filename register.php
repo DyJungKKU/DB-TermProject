@@ -32,13 +32,13 @@ if (isset($_SESSION['mb_id'])) {
       <h1 class="h3 mb-3 font-weight-normal">회원가입</h1>
 
       <label for="mb_id" class="sr-only">아이디</label>
-      <input type="text" id="mb_id" name="mb_id" class="form-control" style="margin-bottom: 10px;" placeholder="아이디" required autofocus>
+      <input type="text" id="mb_id" name="mb_id" class="form-control" style="margin-bottom: 10px;" autocomplete="off" placeholder="아이디" required autofocus>
 
       <label for="mb_password" class="sr-only">비밀번호</label>
-      <input type="password" id="mb_password" name="mb_password" class="form-control" placeholder="비밀번호" required>
+      <input type="password" id="mb_password" name="mb_password" class="form-control" autocomplete="off" placeholder="비밀번호" required>
 
       <label for="mb_password_repeat" class="sr-only">비밀번호 확인</label>
-      <input type="password" id="mb_password_repeat" name="mb_password_repeat" class="form-control" placeholder="비밀번호 확인" required>
+      <input type="password" id="mb_password_repeat" name="mb_password_repeat" class="form-control" autocomplete="off" placeholder="비밀번호 확인" required>
 
       <button class="btn btn-lg btn-primary btn-block" type="submit">회원가입</button>
       <button class="btn btn-lg btn-primary btn-block" type="button" onclick="location.href='/'">로그인</button>

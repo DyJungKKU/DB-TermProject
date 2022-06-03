@@ -68,7 +68,7 @@ input[type="number"]::-webkit-inner-spin-button {
               <td><?php echo $result['amount']; ?> <?php echo $coinUnit; ?></td>
               <td><?php echo number_format($nowPrice * $result['amount']) ?> KRW</td>
               <td style="color: <?php echo $sonik >= 0 ? $color_green : $color_red; ?>"><?php echo number_format($realizeSonik); ?> KRW</td>
-              <td><input type="number" class="form-control" name="price" id="sellAmount-<?php echo $result['symbol']; ?>" placeholder="<?php echo $result['amount']; ?>" style="max-width: 150px;display:inline;"><button class="btn btn-sm btn-outline-secondary" id="sellButton-<?php echo $result['symbol']; ?>"type="button">매도</button></td>
+              <td><input type="number" class="form-control" name="price" id="sellAmount-<?php echo $result['symbol']; ?>" autocomplete="off" placeholder="<?php echo $result['amount']; ?>" style="max-width: 150px;display:inline;"><button class="btn btn-sm btn-outline-secondary" id="sellButton-<?php echo $result['symbol']; ?>"type="button">매도</button></td>
             </tr>
             <?php 
         $total_sell += $nowPrice * $result['amount'];

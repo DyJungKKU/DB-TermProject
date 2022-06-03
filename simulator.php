@@ -22,7 +22,7 @@ input[type="number"]::-webkit-inner-spin-button {
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group mr-2">
           <div class="input-group">
-            <input type="number" class="form-control" name="price" id="tradeKRWValue" placeholder="<?php echo number_format($member['mb_point']); ?>">
+            <input type="number" class="form-control" name="price" autocomplete="off" id="tradeKRWValue" placeholder="<?php echo number_format($member['mb_point']); ?>">
             <div class="input-group-append">
               <span class="input-group-text">₩</span>
             </div>  

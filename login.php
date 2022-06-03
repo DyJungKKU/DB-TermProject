@@ -27,9 +27,9 @@ if (isset($_SESSION['mb_id'])) {
     <form class="form-signin" method="POST" action="login_check.php">
       <h1 class="h3 mb-3 font-weight-normal">로그인</h1>
       <label for="inputEmail" class="sr-only">ID</label>
-      <input type="text" id="inputEmail" name="mb_id" class="form-control" placeholder="ID" required autofocus>
+      <input type="text" id="inputEmail" name="mb_id" class="form-control" placeholder="ID" autocomplete="off" required autofocus>
       <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" id="inputPassword" name="mb_password" class="form-control" placeholder="Password" required>
+      <input type="password" id="inputPassword" name="mb_password" class="form-control" autocomplete="off" placeholder="Password" required>
 
       <button class="btn btn-lg btn-primary btn-block" type="submit">로그인</button>
       <button class="btn btn-lg btn-primary btn-block" type="button" onclick="location.href='/register.php'">회원가입</button>
