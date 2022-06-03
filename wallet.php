@@ -27,41 +27,12 @@ input[type="number"]::-webkit-inner-spin-button {
         <h1 class="h2">지갑 - 잔액 : <?php echo number_format($member['mb_point']); ?> KRW</b></h1>
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group mr-2">
-            <button class="btn btn-sm btn-outline-secondary" id="chartbtn1">BTCUSDT</button>
-            <button class="btn btn-sm btn-outline-secondary" id="chartbtn1">ETHUSDT</button>
-            <button class="btn btn-sm btn-outline-secondary" id="chartbtn1">LTCUSDT</button>
-            <button class="btn btn-sm btn-outline-secondary" id="chartbtn1">EOSUSDT</button>
-            <button class="btn btn-sm btn-outline-secondary" id="chartbtn1">XRPUSDT</button>
-            <button class="btn btn-sm btn-outline-secondary" id="chartbtn1">DOGEUSDT</button>
-            <button class="btn btn-sm btn-outline-secondary" id="chartbtn1">LUNAUSDT</button>
+            <?php foreach ($symbols as $symbol) { ?>
+                <button class="btn btn-sm btn-outline-secondary" id="chart-<?php echo $symbol; ?>" onclick="location.href='/simulator.php?symbol=<?php echo $symbol; ?>'"><?php echo $symbol; ?></button>
+            <?php } ?>
           </div>
         </div>
       </div>
-      <!-- TradingView Widget BEGIN -->
-<div class="tradingview-widget-container" style="height: 400px;">
-  <div id="tradingview_bdda3"></div>
-  <div class="tradingview-widget-copyright">TradingView 제공 <a href="https://kr.tradingview.com/symbols/BTCUSDT/?exchange=BINANCE" rel="noopener" target="_blank"><span class="blue-text">BTCUSDT 차트</span></a></div>
-  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-  <script type="text/javascript">
-  new TradingView.widget(
-  {
-  "width": "100%",
-  "height": 400,
-  "symbol": "BINANCE:<?php echo $symbol; ?>",
-  "interval": "D",
-  "timezone": "Etc/UTC",
-  "theme": "light",
-  "style": "1",
-  "locale": "kr",
-  "toolbar_bg": "#f1f3f6",
-  "enable_publishing": false,
-  "allow_symbol_change": true,
-  "container_id": "tradingview_bdda3"
-}
-  );
-  </script>
-</div>
-<!-- TradingView Widget END -->
       <h2>암호화폐 보유 리스트</h2>
       <div class="table-responsive">
         <table class="table table-striped table-sm">

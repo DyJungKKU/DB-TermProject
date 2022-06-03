@@ -11,12 +11,13 @@ date_default_timezone_set('Asia/Seoul'); // datetime 시간대
 $exchange_rate = 1239.54; // 환율
 
 // 사용 색상 정의
-
 $color_green = "#01A66D";
 $color_red = "#EF5250";
 
-// 사용 함수 정의 
+// 종목 심볼 리스트
+$symbols = ["BTCUSDT", "ETHUSDT", "LTCUSDT", "EOSUSDT", "XRPUSDT", "DOGEUSDT", "LUNAUSDT"];
 
+// 사용 함수 정의 
 if (isset($_SESSION['mb_id'])) {
     $member = get_member($_SESSION['mb_id']);
     $is_logined = true;
