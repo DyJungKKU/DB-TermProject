@@ -23,7 +23,7 @@ $getCoin = get_coin($symbolBig);
 // print_r($getCoin);
 
 if (!$getCoin['lastPrice']) {
-    alert("알 수 없는 오류가 발생하였습니다.\n다시 시도해주세요.");
+    alert("알 수 없는 오류가 발생하였습니다.");
     exit;
 }
 

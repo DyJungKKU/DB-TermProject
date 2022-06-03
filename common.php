@@ -1,8 +1,10 @@
 <?php // 공통 파일
 $pageTitle = "메인 페이지";
+
 if(!session_id()) { // id가 없을 경우 세션 시작 
     session_start(); 
 }
+
 include_once("./dbconfig.php"); // DB 정보
 $conn = mysqli_connect("localhost", $DB_User, $DB_Password, $DB_Name);
 
@@ -17,7 +19,7 @@ $color_red = "#EF5250";
 // 종목 심볼 리스트
 $symbols = ["BTCUSDT", "ETHUSDT", "LTCUSDT", "EOSUSDT", "XRPUSDT", "DOGEUSDT", "LUNAUSDT"];
 
-// 사용 함수 정의 
+//로그인 확인
 if (isset($_SESSION['mb_id'])) {
     $member = get_member($_SESSION['mb_id']);
     $is_logined = true;
@@ -25,6 +27,7 @@ if (isset($_SESSION['mb_id'])) {
     $is_logined = false;
 }
 
+// 사용 함수 정의 
 function sql_query($sql) {
     global $conn;
     return mysqli_query($conn, trim($sql));

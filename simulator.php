@@ -65,7 +65,7 @@ input[type="number"]::-webkit-inner-spin-button {
               <th>#</th>
               <th>종목</th>
               <th>종류</th>
-              <th>평균 매수 단가</th>
+              <th>평균 거래 단가</th>
               <th>거래가</th>
               <th>거래 수량</th>
               <th>날짜</th>
@@ -78,8 +78,11 @@ input[type="number"]::-webkit-inner-spin-button {
               $rs = sql_query($sql);
               while($result = sql_fetch_array($rs)) { 
                   $coinUnit = str_replace("USDT", "", $result['symbol']);
+                  $realizedSonik = 0;
+                  $changePer = 0;
                   if ($result['type'] == "매도") {
                       $realizedSonik = $result['sell_point'] - $result['buy_point'];
+                      $changePer = round(100 - ($result['buy_price'] / $result['sell_price'] * 100), 2);
                   }
                   $cnt++;
                   ?>
@@ -87,7 +90,11 @@ input[type="number"]::-webkit-inner-spin-button {
               <td><?php echo $result['id']; ?></td>
               <td><a href="/simulator.php?symbol=<?php echo $result['symbol']; ?>"><?php echo $result['symbol']; ?></a></td>
               <td><?php echo $result['type']; ?></td>
-              <td><?php echo number_format($result['buy_price']); ?> KRW</td>
+              <td><?php echo $result['type'] == "매수" ? number_format($result['buy_price']) : number_format($result['sell_price']); ?> KRW 
+            <?php if ($changePer) { ?>
+                <?php echo $changePer >= 0 ? "<b style='color: ". $color_green ."'>(". $changePer ."%)</b>" : "<b style='color: ". $color_red ."'>(". $changePer ."%)</b>"; ?>
+            <?php } ?>
+            </td>
               <td><?php echo $result['type'] == "매수" ? number_format($result['buy_point']) : number_format($result['sell_point']); ?> KRW <b style="color: <?php echo $realizedSonik >= 0 ? $color_green : $color_red; ?>"><?php echo $result['type'] == "매도" ? "(".number_format($realizedSonik)." KRW)" : ""; ?></b></td>
               <td><?php echo $result['amount']; ?> <?php echo $coinUnit; ?></td>
               <td><?php echo $result['datetime']; ?></td>

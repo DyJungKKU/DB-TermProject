@@ -6,7 +6,6 @@ include_once("./_common.php");
 </div>
 <hr>
 <footer class="container">
-      <p> &copy; Jung.</p>
     </footer>
 
     <!-- Bootstrap core JavaScript
