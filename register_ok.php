@@ -15,7 +15,7 @@ $sql = " INSERT INTO `member` SET
 `id` = NULL,
 `mb_id` = '$mb_id',
 `mb_password` = '$mb_password',
-`mb_point` = '0' ";
+`mb_point` = '10000000' ";
 sql_query($sql);
 
 alert("회원가입이 완료 되었습니다.", "/");

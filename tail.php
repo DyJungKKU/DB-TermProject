@@ -2,6 +2,8 @@
 include_once("./_common.php");
 
 ?>
+  </div>
+</div>
 
 <footer class="container">
       <p>&copy; Jung.</p>

@@ -4,8 +4,6 @@ include_once("./_common.php");
 $pr_amount = ($_GET['price']) ?? "";
 $symbol = $_GET['symbol'] ?? "";
 
-$exchange_rate = 1239.54;
-
 if (!$pr_amount || !$symbol) {
     alert("알 수 없는 요청입니다.");
 }

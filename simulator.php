@@ -7,15 +7,6 @@ if (!$is_logined) { // 로그인 확인
     alert("로그인 후 이용 가능합니다.", "/login.php");
 }
 
-$symbol = $_GET['symbol'] ?? "BTCUSDT";
-if (!isset($symbol)) exit;
-
-$coin = get_coin($symbol);
-if (!isset($coin)) exit;
-
-$mb_id = $member['mb_id'];
-
-
 ?>
 <link href="./css/simulator.css" rel="stylesheet">
 <style>
@@ -25,60 +16,13 @@ input[type="number"]::-webkit-inner-spin-button {
     margin: 0;
 }
 </style>
-
-<div class="container-fluid">
-  <div class="row">
-    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-      <div class="sidebar-sticky">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link <?php echo $symbol == "BTCUSDT" ? "active" : "" ; ?>" href="/simulator.php?symbol=BTCUSDT">
-              <span data-feather="home"></span>
-              BTCUSDT - 비트코인<?php if ($symbol == "BTCUSDT") { ?><span class="sr-only">(current)<?php } ?></span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link <?php echo $symbol == "ETHUSDT" ? "active" : "" ; ?>" href="/simulator.php?symbol=ETHUSDT">
-              <span data-feather="file"></span>
-              ETHUSDT - 이더리움<?php if ($symbol == "ETHUSDT") { ?><span class="sr-only">(current)<?php } ?></span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link <?php echo $symbol == "DOGEUSDT" ? "active" : "" ; ?>" href="/simulator.php?symbol=DOGEUSDT">
-              <span data-feather="shopping-cart"></span>
-              DOGEUSDT - 도지코인<?php if ($symbol == "DOGEUSDT") { ?><span class="sr-only">(current)<?php } ?></span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link <?php echo $symbol == "LUNAUSDT" ? "active" : "" ; ?>" href="/simulator.php?symbol=LUNAUSDT">
-              <span data-feather="shopping-cart"></span>
-              LUNAUSDT - 루나코인<?php if ($symbol == "LUNAUSDT") { ?><span class="sr-only">(current)<?php } ?></span>
-            </a>
-          </li>
-        </ul>
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-          <span>기능</span>
-          <a class="d-flex align-items-center text-muted" href="#">
-            <span data-feather="plus-circle"></span>
-          </a>
-        </h6>
-        <ul class="nav flex-column mb-2">
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              가상화폐 지갑
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
         <h1 class="h2"><?php echo $symbol; ?> - <?php echo $coin['bidPrice']; ?><b style="font-size: 18px;">USDT</b> <b style="font-size: 18px; color: <?php echo (double)$coin['priceChange'] > 0 ? "#01A66D" : "#CF304A" ?>">(<?php echo (double)$coin['priceChange'] > 0 ? "+" : "" ?><?php echo $coin['priceChange']; ?> <?php echo (double)$coin['priceChange'] > 0 ? "+" : "" ?><?php echo $coin['priceChangePercent']; ?>%)</b></h1>
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group mr-2">
           <div class="input-group">
-            <input type="number" class="form-control" name="price" id="tradeKRWValue" placeholder="0">
+            <input type="number" class="form-control" name="price" id="tradeKRWValue" placeholder="<?php echo number_format($member['mb_point']); ?>">
             <div class="input-group-append">
               <span class="input-group-text">₩</span>
             </div>  
@@ -92,7 +36,7 @@ input[type="number"]::-webkit-inner-spin-button {
       <!-- TradingView Widget BEGIN -->
 <div class="tradingview-widget-container" style="height: 400px;">
   <div id="tradingview_bdda3"></div>
-  <div class="tradingview-widget-copyright">TradingView 제공 <a href="https://kr.tradingview.com/symbols/BTCUSDT/?exchange=BINANCE" rel="noopener" target="_blank"><span class="blue-text">BTCUSDT 차트</span></a></div>
+  <div class="tradingview-widget-copyright">TradingView 제공 <a href="https://kr.tradingview.com/symbols/<?php echo $symbol; ?>/?exchange=BINANCE" rel="noopener" target="_blank"><span class="blue-text"><?php echo $symbol; ?> 차트</span></a></div>
   <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
   <script type="text/javascript">
   new TradingView.widget(
@@ -137,7 +81,7 @@ input[type="number"]::-webkit-inner-spin-button {
                   ?>
             <tr>
               <td><?php echo $result['id']; ?></td>
-              <td><?php echo $result['symbol']; ?></td>
+              <td><a href="/simulator.php?symbol=<?php echo $result['symbol']; ?>"><?php echo $result['symbol']; ?></a></td>
               <td><?php echo $result['type']; ?></td>
               <td><?php echo number_format($result['buy_price']); ?> KRW</td>
               <td><?php echo number_format($result['buy_point']); ?> KRW</td>
@@ -149,10 +93,7 @@ input[type="number"]::-webkit-inner-spin-button {
         </table>
       </div>
     </main>
-  </div>
-</div>
 
-<hr>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
