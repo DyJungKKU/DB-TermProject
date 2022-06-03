@@ -4,9 +4,9 @@ include_once("./_common.php");
 ?>
   </div>
 </div>
-
+<hr>
 <footer class="container">
-      <p>&copy; Jung.</p>
+      <p> &copy; Jung.</p>
     </footer>
 
     <!-- Bootstrap core JavaScript

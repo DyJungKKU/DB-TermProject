@@ -29,7 +29,6 @@ input[type="number"]::-webkit-inner-spin-button {
           </div>
           &nbsp;
             <button class="btn btn-sm btn-outline-secondary" id="buyButton">매수</button>
-            <button class="btn btn-sm btn-outline-secondary" id="sellButton">매도</button>
           </div>
         </div>
       </div>
@@ -74,20 +73,27 @@ input[type="number"]::-webkit-inner-spin-button {
           </thead>
           <tbody>
               <?php
+              $cnt = 0;
               $sql = " SELECT * FROM history WHERE mb_id = '$mb_id' ORDER BY id DESC ";
               $rs = sql_query($sql);
               while($result = sql_fetch_array($rs)) { 
                   $coinUnit = str_replace("USDT", "", $result['symbol']);
+                  if ($result['type'] == "매도") {
+                      $realizedSonik = $result['sell_point'] - $result['buy_point'];
+                  }
+                  $cnt++;
                   ?>
             <tr>
               <td><?php echo $result['id']; ?></td>
               <td><a href="/simulator.php?symbol=<?php echo $result['symbol']; ?>"><?php echo $result['symbol']; ?></a></td>
               <td><?php echo $result['type']; ?></td>
               <td><?php echo number_format($result['buy_price']); ?> KRW</td>
-              <td><?php echo number_format($result['buy_point']); ?> KRW</td>
+              <td><?php echo $result['type'] == "매수" ? number_format($result['buy_point']) : number_format($result['sell_point']); ?> KRW <b style="color: <?php echo $realizedSonik >= 0 ? $color_green : $color_red; ?>"><?php echo $result['type'] == "매도" ? "(".number_format($realizedSonik)." KRW)" : ""; ?></b></td>
               <td><?php echo $result['amount']; ?> <?php echo $coinUnit; ?></td>
               <td><?php echo $result['datetime']; ?></td>
             </tr>
+            <?php }  if ($cnt == 0) { ?>
+                <td colspan="7" style="text-align: center;">데이터가 없습니다.</td>
             <?php } ?>
           </tbody>
         </table>
@@ -100,7 +106,6 @@ input[type="number"]::-webkit-inner-spin-button {
 <script>
     $("#tradeKRWValue").on("change keyup paste", function() {
         $("#buyButton").attr("onclick", "location.href='buy.php?price=" + $("#tradeKRWValue").val() + "&symbol=<?php echo $symbol; ?>'");
-        $("#sellButton").attr("onclick", "location.href='sell.php?price=" + $("#tradeKRWValue").val() + "&symbol=<?php echo $symbol; ?>'");
     });
 </script>
 

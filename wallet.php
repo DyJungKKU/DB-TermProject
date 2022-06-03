@@ -45,10 +45,12 @@ input[type="number"]::-webkit-inner-spin-button {
               <th>보유량</th>
               <th>판매가</th>
               <th>실현 손익</th>
+              <th>매도</th>
             </tr>
           </thead>
           <tbody>
               <?php
+              $cnt = 0;
               $sql = " SELECT * FROM wallet WHERE mb_id = '$mb_id' ORDER BY id DESC ";
               $rs = sql_query($sql);
               while($result = sql_fetch_array($rs)) { 
@@ -66,13 +68,17 @@ input[type="number"]::-webkit-inner-spin-button {
               <td><?php echo $result['amount']; ?> <?php echo $coinUnit; ?></td>
               <td><?php echo number_format($nowPrice * $result['amount']) ?> KRW</td>
               <td style="color: <?php echo $sonik >= 0 ? $color_green : $color_red; ?>"><?php echo number_format($realizeSonik); ?> KRW</td>
+              <td><input type="number" class="form-control" name="price" id="sellAmount-<?php echo $result['symbol']; ?>" placeholder="<?php echo $result['amount']; ?>" style="max-width: 150px;display:inline;"><button class="btn btn-sm btn-outline-secondary" id="sellButton-<?php echo $result['symbol']; ?>"type="button">매도</button></td>
             </tr>
             <?php 
         $total_sell += $nowPrice * $result['amount'];
-        } 
-        $total_sonik = ($total_sell + $member['mb_point']) - 10_000_000;
-        
+        $cnt++;
         ?>
+        <?php }  if ($cnt == 0) { ?>
+            <td colspan="7" style="text-align: center;">데이터가 없습니다.</td>
+        <?php } ?>
+      </tbody> 
+      <?php $total_sonik = ($total_sell + $member['mb_point']) - 10_000_000; ?>
           </tbody>
         </table>
         <h2>총 자산 : <?php echo number_format($total_sell + $member['mb_point']); ?> KRW</h2>
@@ -82,6 +88,14 @@ input[type="number"]::-webkit-inner-spin-button {
 
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script>
+    <?php foreach ($symbols as $symbol) { ?>
+        $("#sellAmount-<?php echo $symbol; ?>").on("change keyup paste", function() {
+            $("#sellButton-<?php echo $symbol; ?>").attr("onclick", "location.href='sell.php?amount=" + $("#sellAmount-<?php echo $symbol; ?>").val() + "&symbol=<?php echo $symbol; ?>'");
+        });
+    <?php } ?>
+</script>
 
 <?php
 include_once("./_tail.php");
